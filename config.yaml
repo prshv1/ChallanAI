@@ -1,0 +1,33 @@
+# ─── Invoice Generator Configuration ─────────────────────────────────────────
+# Customize this file for your business. All fields are used in the invoice.
+# This is an EXAMPLE config — replace with your actual business details.
+
+company:
+  name: "ACME ENTERPRISES"
+  subtitle: "(BUILDING MATERIAL SUPPLIERS)"
+  address: "101, Example Building, Main Road, Mumbai - 400001."
+  contact: "9000000000/9000000001"
+  gstn: "27XXXXX0000X1ZX"
+  pan: "XXXXX0000X"
+
+buyer:
+  name: "SAMPLE CONSTRUCTION LTD."
+  address: |
+    4th Floor, Example House,
+    15/A MG Road, Andheri (East),
+    Mumbai - 400069.
+  gstn: "27YYYYY0000Y1ZY"
+
+bank:
+  account_name: "ACME ENTERPRISES"
+  bank_name: "STATE BANK"
+  account_no: "000000000000000"
+  branch: "MAIN BRANCH"
+  ifsc: "SBIN0000001"
+
+gst:
+  cgst_rate: 0.09
+  sgst_rate: 0.09
+  hsn_code: 996511
+
+unit: "Tonne"

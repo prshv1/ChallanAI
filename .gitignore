@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output files (generated, not tracked)
+Final_Output.xlsx
+Final_Output.pdf
+Invoice_*.xlsx
+Invoice_*.pdf
+output/
+
+# Test cache
+.pytest_cache/
+
+# Environment variables
+.env
+.env.local
