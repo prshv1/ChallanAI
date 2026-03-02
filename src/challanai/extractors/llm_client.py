@@ -6,9 +6,9 @@ from typing import Optional, Union
 import pandas as pd
 import requests
 
-from invoice_generator.core.image_utils import encode_image_for_llm
-from invoice_generator.extractors.json_parser import repair_json
-from invoice_generator.extractors.validator import convert_records_to_dataframe
+from challanai.core.image_utils import encode_image_for_llm
+from challanai.extractors.json_parser import repair_json
+from challanai.extractors.validator import convert_records_to_dataframe
 
 logger = logging.getLogger(__name__)
 
@@ -29,7 +29,7 @@ def _call_openrouter(messages: list[dict], model: str, api_key: str) -> str:
     headers = {
         "Authorization": f"Bearer {api_key}",
         "HTTP-Referer": "http://localhost:8000",
-        "X-Title": "Invoice Generator",
+        "X-Title": "ChallanAI",
     }
 
     payload = {

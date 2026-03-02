@@ -5,8 +5,8 @@ from pathlib import Path
 from typing import Union
 
 import pandas as pd
-from invoice_generator.core.image_utils import preprocess_image
-from invoice_generator.extractors.validator import OUTPUT_COLUMNS
+from challanai.core.image_utils import preprocess_image
+from challanai.extractors.validator import OUTPUT_COLUMNS
 
 logger = logging.getLogger(__name__)
 

@@ -5,17 +5,17 @@ from pathlib import Path
 from typing import Optional, Union
 
 import pandas as pd
-from invoice_generator.core.config import load_config
-from invoice_generator.extractors.llm_client import (
+from challanai.core.config import load_config
+from challanai.extractors.llm_client import (
     extract_with_vision,
     extract_with_llm_text,
 )
-from invoice_generator.extractors.ocr_engine import (
+from challanai.extractors.ocr_engine import (
     extract_with_ocr,
     ocr_text_to_dataframe,
 )
-from invoice_generator.extractors.validator import generate_validation_warnings
-from invoice_generator.generation import generate_invoice, generate_pdf
+from challanai.extractors.validator import generate_validation_warnings
+from challanai.generation import generate_invoice, generate_pdf
 
 logger = logging.getLogger(__name__)
 

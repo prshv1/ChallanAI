@@ -4,10 +4,10 @@ from typing import Optional, Union
 from openpyxl import Workbook
 import logging
 
-from invoice_generator.core.config import load_config
-from invoice_generator.core.data_processing import DataProcessor
-from invoice_generator.renderers.excel import InvoiceExcelRenderer
-from invoice_generator.renderers.pdf import InvoicePDFRenderer
+from challanai.core.config import load_config
+from challanai.core.data_processing import DataProcessor
+from challanai.renderers.excel import InvoiceExcelRenderer
+from challanai.renderers.pdf import InvoicePDFRenderer
 
 logger = logging.getLogger(__name__)
 

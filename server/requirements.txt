@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pandas
+openpyxl
+fpdf2
+pyyaml
+easyocr
+opencv-python-headless
+requests
+python-dotenv

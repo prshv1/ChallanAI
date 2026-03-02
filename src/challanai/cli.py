@@ -5,9 +5,9 @@ import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
-from invoice_generator.core.config import load_config
-from invoice_generator.extraction import batch_process_images, images_to_invoice
-from invoice_generator.generation import batch_process, generate_invoice, generate_pdf
+from challanai.core.config import load_config
+from challanai.extraction import batch_process_images, images_to_invoice
+from challanai.generation import batch_process, generate_invoice, generate_pdf
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +17,7 @@ load_dotenv()
 def main_generator() -> None:
     """Command-line interface entry point for generating Excel invoices from Data."""
     parser = argparse.ArgumentParser(
-        description="Invoice Generator — GST Tax Invoice from Raw Delivery Data"
+        description="ChallanAI — GST Tax Invoice from Raw Delivery Data"
     )
     parser.add_argument("-i", "--invoice", type=int, help="Invoice number")
     parser.add_argument(

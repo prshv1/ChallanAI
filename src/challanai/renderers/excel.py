@@ -4,7 +4,7 @@ from typing import Any, Optional
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Border, Font, Side
 
-from invoice_generator.core.config import sanitize_sheet_name
+from challanai.core.config import sanitize_sheet_name
 
 logger = logging.getLogger(__name__)
 

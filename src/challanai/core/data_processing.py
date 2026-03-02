@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Optional, Union
 
 import pandas as pd
-from invoice_generator.core.config import load_config
+from challanai.core.config import load_config
 
 logger = logging.getLogger(__name__)
 

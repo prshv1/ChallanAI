@@ -1,0 +1,14 @@
+.git
+.gitignore
+.env
+.env.local
+__pycache__
+*.pyc
+.venv
+venv
+.pytest_cache
+.DS_Store
+Example Data
+challanai_web
+*.md
+todo.md
