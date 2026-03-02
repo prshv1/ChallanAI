@@ -310,9 +310,7 @@
 </div>
 
 <script>
-const BASE_URL = (typeof process !== 'undefined' && process.env && process.env.BASE_URL)
-  ? process.env.BASE_URL
-  : (window.__ENV__?.BASE_URL || 'http://localhost:8000');
+const BASE_URL = '/api';
 
 const dropzone = document.getElementById('dropzone');
 const fileInput = document.getElementById('fileInput');
