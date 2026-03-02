@@ -21,4 +21,5 @@ USER challanai
 
 EXPOSE 8080
 
+RUN python -c "import easyocr; easyocr.Reader(['en'])"
 CMD ["uvicorn", "server.api:app", "--host", "0.0.0.0", "--port", "8080"]
