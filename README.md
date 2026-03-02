@@ -78,19 +78,19 @@ Create an Excel file (`.xlsx` or `.xls`) with these columns:
 
 ```bash
 # Interactive mode
-python3 src/invoice_generator/generator.py
+python3 -c "from invoice_generator.cli import main_generator; main_generator()"
 
 # Specify invoice number
-python3 src/invoice_generator/generator.py -i 178
+python3 -c "from invoice_generator.cli import main_generator; main_generator()" -i 178
 
 # Generate Excel + PDF
-python3 src/invoice_generator/generator.py -i 178 --pdf
+python3 -c "from invoice_generator.cli import main_generator; main_generator()" -i 178 --pdf
 
 # Batch process all files in a folder
-python3 src/invoice_generator/generator.py --batch ./data/ --start 178
+python3 -c "from invoice_generator.cli import main_generator; main_generator()" --batch ./data/ --start 178
 
 # Batch with PDF output
-python3 src/invoice_generator/generator.py --batch ./data/ --start 178 --pdf --output-dir ./invoices/
+python3 -c "from invoice_generator.cli import main_generator; main_generator()" --batch ./data/ --start 178 --pdf --output-dir ./invoices/
 ```
 
 ---
@@ -130,7 +130,7 @@ unit: "Tonne"
 
 Use a custom config file:
 ```bash
-python3 src/invoice_generator/generator.py -i 178 --config my_config.yaml
+python3 -c "from invoice_generator.cli import main_generator; main_generator()" -i 178 --config my_config.yaml
 ```
 
 ---
@@ -138,7 +138,7 @@ python3 src/invoice_generator/generator.py -i 178 --config my_config.yaml
 ## 🔧 Python Module API
 
 ```python
-from generate_invoices import generate_invoice, generate_pdf, batch_process
+from invoice_generator import generate_invoice, generate_pdf, batch_process
 
 # Generate Excel workbook
 wb = generate_invoice("data.xlsx", inv_num=178)
@@ -184,19 +184,20 @@ Tests cover:
 
 ```
 invoice-generator/
-├── src/invoice_generator/generator.py    # Core engine (CLI + module API)
+├── src/invoice_generator/
+│   ├── core/              # Config, data processing, and image utility
+│   ├── extractors/        # Image processors (JSON parsing, LLM, OCR)
+│   ├── renderers/         # Excel and PDF rendering
+│   ├── __init__.py        # Public module interface
+│   ├── cli.py             # Command Line Interface parsers
+│   ├── extraction.py      # Image-to-Invoice pipeline
+│   └── generation.py      # Excel-to-Invoice pipeline
 ├── config.yaml             # Business configuration (customizable)
 ├── requirements.txt        # Dependencies
-├── Example Data/
-│   ├── Raw_Data.xlsx       # Full sample (3 sites, 3 materials)
-│   ├── Single_Site.xlsx    # Edge case: 1 site, 1 material
-│   ├── Multi_Rate.xlsx     # Edge case: different rates per material
-│   ├── Minimal.xlsx        # Edge case: 1 row of data
-│   └── Edge_Cases.xlsx     # Edge case: string dates, missing values
-├── tests/
-│   └── test_invoices.py    # 62 test cases
+├── Example Data/           # Sample data for testing
 ├── .gitignore
-└── README.md
+├── README.md
+└── features.md             # Detailed feature logs
 ```
 
 ---
@@ -221,11 +222,12 @@ invoice-generator/
 ## 📋 CLI Reference
 
 ```
-usage: src/invoice_generator/generator.py [-h] [-i INVOICE] [--input INPUT] [--output OUTPUT]
-                            [--pdf] [--batch DIR] [--start START]
-                            [--output-dir DIR] [--config CONFIG] [--version]
+usage: main_generator [-h] [-i INVOICE] [--input INPUT] [--output OUTPUT]
+                             [--pdf] [--batch DIR] [--start START]
+                             [--output-dir DIR] [--config CONFIG]
 
 options:
+  -h, --help       show this help message and exit
   -i, --invoice    Invoice number
   --input          Input Excel file (default: Example Data/Raw_Data.xlsx)
   --output         Output Excel file (default: Final_Output.xlsx)
@@ -234,7 +236,6 @@ options:
   --start START    Starting invoice number for batch mode (default: 1)
   --output-dir DIR Output directory for batch mode
   --config CONFIG  Path to config YAML file
-  --version        Show version number
 ```
 
 ---
@@ -245,8 +246,8 @@ options:
 - [x] ~~PDF export~~
 - [x] ~~Batch processing with auto-numbering~~
 - [x] ~~Test suite~~
+- [x] ~~📸 OCR support — upload photos of handwritten bills~~
 - [ ] 🌐 Web interface — browser-based upload & download
-- [ ] 📸 OCR support — upload photos of handwritten bills
 - [ ] 📧 Email integration — auto-send invoices to buyers
 - [ ] 🔄 IGST support — inter-state invoice detection
 
